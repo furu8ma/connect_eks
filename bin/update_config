@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+
+function show_help ()
+{
+    echo "update_kubeconfig -c cluster_name -n name_space"
+    echo "One option value is required at least."
+    exit;
+}
+
+
+while getopts c:n:h OPT
+do
+  case $OPT in
+    "c" ) CLUSTER_NAME=$OPTARG
+        ;;
+    "n" ) NAME_SPACE=$OPTARG 
+        ;;
+    "h" ) show_help
+        ;;
+  esac
+done
+
+if [ -z $CLUSTER_NAME ] && [ -z $NAME_SPACE ]
+then
+    show_help
+fi
+
+if [ -n "$CLUSTER_NAME" ]
+then
+    aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $CLUSTER_NAME
+fi
+
+if [ -n "$NAME_SPACE" ]
+then
+    kubectl config set-context $(kubectl config current-context) --namespace=$NAME_SPACE
+fi
+
