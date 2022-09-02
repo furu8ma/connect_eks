@@ -38,10 +38,23 @@ kubectl get pv
 kubectl get ingress
 .
 .
+eksctl get cluster
 .
+.
+aws ec2 describe-instances
+.
+.
+helm list
+.
+.
+
+
 ```
 
 [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+[eksctl](https://eksctl.io/)
+[awscli2](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-welcome.html)
+[helm](https://helm.sh/)
 
 
 Let's enjoy kubernetes!
