@@ -32,9 +32,9 @@ docker run -ith eks --rm \
     -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     -e AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN \
     -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
-    -e PATH=/work/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    -e PATH=/work/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.krew/bin \
     -w /work \
     -v $PWD:/work \
     -v aks_cmd_root:/root \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    ekscmd:latest bash
+    ekscmd:latest fish
