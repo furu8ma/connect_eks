@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t ekscmd:latest .
+docker build --platform linux/amd64 -t ekscmd:latest .
