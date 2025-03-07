@@ -37,4 +37,4 @@ docker run -ith eks --rm \
     -v $PWD:/work \
     -v aks_cmd_root:/root \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    ekscmd:1.29 fish
+    ekscmd:1.31 fish

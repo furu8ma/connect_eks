@@ -1,13 +1,13 @@
 FROM ubuntu:24.04
 
 #ARG eksctl_version="v0.109.0"
-ARG eksctl_version="v0.177.0"
+#ARG eksctl_version="v0.177.0"
+ARG eksctl_version="v0.194.0"
 
 #kubectl download url
-
 #ARG kubectl_dl_url="https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.7/2022-06-29/bin/linux/amd64/kubectl"
-ARG kubectl_dl_url="https://s3.us-west-2.amazonaws.com/amazon-eks/1.29.0/2024-01-04/bin/linux/amd64/kubectl"
-
+#ARG kubectl_dl_url="https://s3.us-west-2.amazonaws.com/amazon-eks/1.29.0/2024-01-04/bin/linux/amd64/kubectl"
+ARG kubectl_dl_url="https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.0/2024-09-12/bin/linux/amd64/kubectl"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,35 +23,6 @@ RUN apt-get update && \
 
 # Install helm
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-# Install dependent packages
-#RUN apk add helm --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
-#RUN apk add helm
-#RUN apk add --no-cache \
-#    binutils \
-#    bash \
-#    fish \
-#    pipx \
-#    python3 \
-#    curl \
-#    groff \
-#    jq \
-#    ncurses \
-#    vim \
-#    less \
-#    docker-cli \
-#    openssh \
-#    git \
-#    gcompat
-
-
-#    py3-pip \
-
-# Install glibc for awscli2
-#RUN curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub && \
-#    curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.33-r0/glibc-2.33-r0.apk && \
-#    curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.33-r0/glibc-bin-2.33-r0.apk && \
-#    apk add --no-cache glibc-2.33-r0.apk glibc-bin-2.33-r0.apk
 
 # Install awscli2
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
@@ -85,8 +56,8 @@ RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/
 RUN helm plugin install https://github.com/databus23/helm-diff
 
 # Install pluto
-RUN curl -fsSLO "https://github.com/FairwindsOps/pluto/releases/download/v5.19.4/pluto_5.19.4_linux_amd64.tar.gz" && \
-    tar zxvf "pluto_5.19.4_linux_amd64.tar.gz" && \
+RUN curl -fsSLO "https://github.com/FairwindsOps/pluto/releases/download/v5.20.3/pluto_5.20.3_linux_amd64.tar.gz" && \
+    tar zxvf "pluto_5.20.3_linux_amd64.tar.gz" && \
     mv /pluto /usr/local/bin/
 
 
